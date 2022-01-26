@@ -4,6 +4,7 @@ import './App.css';
 
 //components
 import Navbar from './components/Navbar';
+import ItemListContainer from './components/ItemListContainer';
 
 class App extends Component {
   render(){
@@ -12,6 +13,7 @@ class App extends Component {
         <header>
         {/* className="App-header" */}
           <Navbar />
+          <ItemListContainer />
         </header>
       </div>
     );

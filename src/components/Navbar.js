@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
+import CartWidget from './CartWidget';
+
 
 const navbar = () => {
   return <Navbar bg="light" expand="lg">
@@ -19,6 +21,7 @@ const navbar = () => {
           <NavDropdown.Item href="#action/3.4">Peluches Legendarios</NavDropdown.Item>
         </NavDropdown>
       </Nav>
+      <CartWidget/>
     </Navbar.Collapse>
   </Container>
 </Navbar>;
