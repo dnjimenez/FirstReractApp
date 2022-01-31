@@ -6,6 +6,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import ItemListContainer from './components/ItemListContainer';
 
+const message = "Soy un ItemListContainer"
+
 class App extends Component {
   render(){
     return (
@@ -13,7 +15,7 @@ class App extends Component {
         <header>
         {/* className="App-header" */}
           <Navbar />
-          <ItemListContainer />
+          <ItemListContainer message= {message} />
         </header>
       </div>
     );
