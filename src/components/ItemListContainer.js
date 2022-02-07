@@ -38,17 +38,31 @@ const ItemListContainer = () => {
             img: pikachu
         }
     ]
+    const promesa = new Promise((resolve) => {
+        //code side
+        setTimeout(() => {
+            resolve(listItems)
+        }, 2000)
+    })
+    
+
+    const [items, setItems] = useState([])
+    useEffect(() => {
+        promesa.then((response) => {
+            setItems(response)
+        })
+    }, [])
 
     return (
 		<div class='itemListContainer'>
-			{listItems.map((item) => {
+			{items.map((item) => {
                 // console.log(item)
 				return (
 					<div key={item.id}>
 						<Item data={item}/>
 					</div>
 				);
-			})}
+			})} 
 		</div>
 	);
     
