@@ -15,6 +15,7 @@ const ItemDetailContainer = () => {
             name:"Pikachu",
             description:"Soy un Pikachu",
             largeDescription: "Los Pikachu acumulan ectricidad de forma natural. Los bosques donde habitan en grupos están en peligro constante de ser alcanzados por rayos.",
+            precio: 500,
             stock:5,
             img: pikachu
         }

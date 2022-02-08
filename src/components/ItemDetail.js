@@ -15,6 +15,7 @@ const ItemDetail = ({data}) => {
                 </Card.Text>
                 <Card.Text class='itemStockArea'>
                 <h5>Stock: {data.stock}</h5>
+                <h5>Precio: {data.precio}</h5>
                 </Card.Text>
                 <div class='buttonArea'>
                     <Button variant="dark">Comprar</Button>
