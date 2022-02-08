@@ -1,0 +1,46 @@
+.itemDetailCard {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . . ."
+      "ImageArea ImageArea infoCard infoCard"
+      "ImageArea ImageArea infoCard infoCard"
+      "ImageArea ImageArea infoCard infoCard";
+  }
+  
+  .ImageArea { grid-area: ImageArea; }
+  
+  .infoCard { grid-area: infoCard; }
+
+  
+
+  /* infocard */
+  #infoCardDetail {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". itemTitleArea itemTitleArea ."
+      ". itemDescriptionArea itemDescriptionArea ."
+      ". itemDescriptionArea itemDescriptionArea ."
+      ". itemStockArea itemStockArea ."
+      ". buttonArea buttonArea .";
+  }
+  
+  .buttonArea { grid-area: buttonArea; }
+  
+  .itemDescriptionArea { grid-area: itemDescriptionArea; }
+  
+  .itemStockArea { grid-area: itemStockArea; }
+  
+  .itemTitleArea { grid-area: itemTitleArea; }
+  
+
+
+
+  #itemImage{
+    float:right
+  }
