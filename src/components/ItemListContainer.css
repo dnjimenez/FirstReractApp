@@ -6,3 +6,15 @@
     /* grid-auto-columns: 50px; */
     grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
 }
+
+
+.noDecorationLink{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+/* Solucion porque sino se ponia azul al pasarle el mouse por arriba */
+.noDecorationLink:hover{
+    color: inherit;
+    text-decoration: inherit;
+}

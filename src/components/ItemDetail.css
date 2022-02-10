@@ -27,10 +27,13 @@
       ". itemDescriptionArea itemDescriptionArea ."
       ". itemDescriptionArea itemDescriptionArea ."
       ". itemStockArea itemStockArea ."
+      /* ". counterArea counterArea ." */
       ". buttonArea buttonArea .";
   }
   
   .buttonArea { grid-area: buttonArea; }
+
+  /* .counterArea { grid-area: counterArea; } */
   
   .itemDescriptionArea { grid-area: itemDescriptionArea; }
   
@@ -39,8 +42,10 @@
   .itemTitleArea { grid-area: itemTitleArea; }
   
 
-
-
   #itemImage{
     float:right
+  }
+
+  .cardCenterItem{
+    text-align: center;
   }

@@ -1,25 +1,23 @@
 import {React, useState, useEffect} from 'react';
 import './ItemListContainer.css';
 import ItemDetail from "./ItemDetail"
-import { Figure} from 'react-bootstrap';
-import charmander from '../img/itemImages/charmander.png'
-import bulbasaur from '../img/itemImages/bulbasaur.png'
-import squirtle from '../img/itemImages/squirtle.png'
-import pikachu from '../img/itemImages/pikachu.png'
+import { listItems } from '../constants/ItemConstants';
 
-const ItemDetailContainer = () => {
+
+const ItemDetailContainer = ({itemId}) => {
+
+    // console.log(itemId)
 
     function getItem(){
-        return {
-            id:"item4",
-            name:"Pikachu",
-            description:"Soy un Pikachu",
-            largeDescription: "Los Pikachu acumulan ectricidad de forma natural. Los bosques donde habitan en grupos están en peligro constante de ser alcanzados por rayos.",
-            precio: 500,
-            stock:5,
-            img: pikachu
+        for (let i = 0; i < listItems.length; i++) {
+            console.log(listItems[i])
+            if (listItems[i].id==itemId.id){
+                console.log(true)
+                return listItems[i]
+            }
         }
     }
+
     const promesa = new Promise((resolve) => {
         //code side
         setTimeout(() => {
@@ -28,12 +26,17 @@ const ItemDetailContainer = () => {
     })
     
 
-    const [stateItem, setStateItemItem] = useState({})
+    const [stateItem, setStateItem] = useState({})
+    
+
     useEffect(() => {
         promesa.then((response) => {
-            setStateItemItem(response)
+            console.log(response)
+            setStateItem(response)
         })
     }, [])
+
+    
 
     return (
 		<div class='itemListContainer'>

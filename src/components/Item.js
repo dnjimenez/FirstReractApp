@@ -9,7 +9,7 @@ const Item = ({data}) => {
             <Card.Text>
                 {data.description}
             </Card.Text>
-        <Button variant="dark">Comprar</Button>
+        {/* <Button variant="dark">Comprar</Button> */}
     </Card.Body>
     </Card>
 };

@@ -1,0 +1,10 @@
+.noDecorationLink{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+/* Solucion porque sino se ponia azul al pasarle el mouse por arriba */
+.noDecorationLink:hover{
+    color: inherit;
+    text-decoration: inherit;
+}
