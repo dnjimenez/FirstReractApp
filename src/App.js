@@ -14,6 +14,7 @@ import ItemListView from './views/ItemListView'
 import ItemDetailView from './views/ItemDetailView'
 import LocationView from './views/LocationView';
 import TazasView from './views/TazasView';
+import CartView from './views/CartView';
 
 
 const message = "Soy un ItemListContainer"
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path='/detail/:id' element={<ItemDetailView/>}/>
           <Route path='/Locacion' element={<LocationView/>}/>
           <Route path='Tazas' element={<TazasView/>}/>
+          <Route path='/Cart' element={<CartView/>}/>
         </Routes>
       </Router>
       

@@ -1,5 +1,15 @@
-.buttonContainer{
+.itemCounter{
     display: flex;
-    /* align-items: stretch; */
+    width: 10rem;
+    height: 30px;
     justify-content: space-between;
+    text-align: center;
+}
+
+.counterButton{
+    display: flex;
+    width:2rem;
+    /* vertical-align:center; */
+    /* text-align: center; */
+    
 }

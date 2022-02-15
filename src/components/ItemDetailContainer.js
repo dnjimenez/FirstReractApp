@@ -10,9 +10,9 @@ const ItemDetailContainer = ({itemId}) => {
 
     function getItem(){
         for (let i = 0; i < listItems.length; i++) {
-            console.log(listItems[i])
+            // console.log(listItems[i])
             if (listItems[i].id==itemId.id){
-                console.log(true)
+                // console.log(true)
                 return listItems[i]
             }
         }
@@ -31,7 +31,7 @@ const ItemDetailContainer = ({itemId}) => {
 
     useEffect(() => {
         promesa.then((response) => {
-            console.log(response)
+            // console.log(response)
             setStateItem(response)
         })
     }, [])

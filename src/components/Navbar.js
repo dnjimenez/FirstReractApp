@@ -10,6 +10,7 @@ const navbar = () => {
   return <Navbar bg="light" expand="lg">
   <Container>
     <Navbar.Brand href="#home">
+      {/* TODO: Mejorar esto, esta levantando un warning */}
       <Link className = "noDecorationLink"to="/">Claw Shop</Link>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

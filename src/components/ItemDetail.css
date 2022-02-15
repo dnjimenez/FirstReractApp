@@ -19,7 +19,7 @@
   /* infocard */
   #infoCardDetail {  display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -27,19 +27,28 @@
       ". itemDescriptionArea itemDescriptionArea ."
       ". itemDescriptionArea itemDescriptionArea ."
       ". itemStockArea itemStockArea ."
-      /* ". counterArea counterArea ." */
+      ". counterArea counterArea ." 
       ". buttonArea buttonArea .";
   }
   
   .buttonArea { grid-area: buttonArea; }
 
-  /* .counterArea { grid-area: counterArea; } */
+  .counterArea { 
+    grid-area: counterArea; 
+  } 
   
   .itemDescriptionArea { grid-area: itemDescriptionArea; }
   
-  .itemStockArea { grid-area: itemStockArea; }
+  .itemStockArea { 
+    grid-area: itemStockArea; 
+    text-align: center;
+  }
   
-  .itemTitleArea { grid-area: itemTitleArea; }
+  .itemTitleArea { 
+    grid-area: itemTitleArea; 
+    display:flex;
+    align-items: center;
+  }
   
 
   #itemImage{
@@ -47,5 +56,7 @@
   }
 
   .cardCenterItem{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items:center;
   }
