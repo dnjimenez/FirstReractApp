@@ -34,7 +34,7 @@ class ItemCount extends React.Component {
 
     onAdd = (event) => {
         this.props.parentCallback(this.state.counter);
-        console.log(this.state.counter)
+        // console.log(this.state.counter)
         event.preventDefault();
     }
 

@@ -41,7 +41,9 @@ const navbar = () => {
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>
-      <CartWidget/>
+      <Link to="/Cart">
+        <CartWidget/>
+      </Link>
     </Navbar.Collapse>
   </Container>
 </Navbar>;

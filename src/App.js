@@ -16,6 +16,9 @@ import LocationView from './views/LocationView';
 import TazasView from './views/TazasView';
 import CartView from './views/CartView';
 
+//Providers
+import { ItemsProvider } from './providers/ItemProvider'
+
 
 const message = "Soy un ItemListContainer"
 
@@ -23,22 +26,23 @@ class App extends Component {
   render(){
     return (
       <Router>
-        <div className="App">
-          <header>
-          {/* className="App-header" */}
-            <Navbar />
-          </header>
-        </div>
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/Shop' element={<ItemListView/>} />
-          <Route path='/detail/:id' element={<ItemDetailView/>}/>
-          <Route path='/Locacion' element={<LocationView/>}/>
-          <Route path='Tazas' element={<TazasView/>}/>
-          <Route path='/Cart' element={<CartView/>}/>
-        </Routes>
+        <ItemsProvider>
+          <div className="App">
+            <header>
+            {/* className="App-header" */}
+              <Navbar />
+            </header>
+          </div>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/Shop' element={<ItemListView/>} />
+            <Route path='/detail/:id' element={<ItemDetailView/>}/>
+            <Route path='/Locacion' element={<LocationView/>}/>
+            <Route path='Tazas' element={<TazasView/>}/>
+            <Route path='/Cart' element={<CartView/>}/>
+          </Routes>
+        </ItemsProvider>
       </Router>
-      
     );
   }
   
