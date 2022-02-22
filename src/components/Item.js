@@ -1,12 +1,13 @@
 import React from 'react';
 import { Card, Button} from 'react-bootstrap';
+import './Item.css'
 
 const Item = ({data}) => {
-    return <Card style={{ width: '18rem' }}>
+    return <Card className='itemCard text-center' /*bg='dark'*/ style={{ margin:'10px',width: '300px' }}>
         <Card.Img variant="top" src={data.img}/>
         <Card.Body>
-            <Card.Title>{data.name}</Card.Title>
-            <Card.Text>
+            <Card.Title className='cardText'>{data.name}</Card.Title>
+            <Card.Text className='cardText'>
                 {data.description}
             </Card.Text>
         {/* <Button variant="dark">Comprar</Button> */}

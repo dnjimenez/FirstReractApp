@@ -1,0 +1,15 @@
+.itemCard{
+    border: 4px solid rgb(187, 187, 31) !important; 
+    /* border-width: 8px !important;
+    border-style: solid; */
+    background-color: black !important;
+    /* border-image:radial-gradient(#e66465, #9198e5) !important; */
+}
+
+.itemCard:hover{
+    box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.cardText{
+    color:white !important;
+}

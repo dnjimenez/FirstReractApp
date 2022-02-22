@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import { Container, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
 import {Link} from 'react-router-dom'
@@ -6,9 +6,15 @@ import CartWidget from './CartWidget';
 import './Navbar.css';
 
 
-const navbar = () => {
+//context
+import { ItemsContext } from '../providers/ItemProvider'
+
+
+const NavBar = () => {
+  const [items, setItems, addItem,removeItem, clearCart, isInCart, getItemQuantity] = useContext(ItemsContext);//Context para chequeo de cart
+
   return <Navbar bg="light" expand="lg">
-  <Container>
+  <Container className='customNavbar'>
     <Navbar.Brand href="#home">
       {/* TODO: Mejorar esto, esta levantando un warning */}
       <Link className = "noDecorationLink"to="/">Claw Shop</Link>
@@ -41,12 +47,18 @@ const navbar = () => {
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>
-      <Link to="/Cart">
+      {/* {items.length > 0 ? ( 
+        <Link to="/Cart">
         <CartWidget/>
-      </Link>
+      </Link>):()} */}
+      {true &&
+        <Link to="/Cart">
+          <CartWidget/>
+        </Link>
+      }
     </Navbar.Collapse>
   </Container>
 </Navbar>;
 };
 
-export default navbar;
+export default NavBar;

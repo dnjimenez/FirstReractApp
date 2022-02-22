@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import './ItemListContainer.css';
+// import './ItemListContainer.css';
 import ItemDetail from "./ItemDetail"
 import { listItems } from '../constants/ItemConstants';
 
@@ -38,10 +38,7 @@ const ItemDetailContainer = ({itemId}) => {
 
     
 
-    return (
-		<div class='itemListContainer'>
-            <ItemDetail data={stateItem}/>
-		</div>
+    return (<ItemDetail data={stateItem}/>
 	);
     
 };

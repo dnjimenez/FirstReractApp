@@ -38,13 +38,7 @@ export const ItemsProvider = ({ children }) => {
 	};
 
     const removeItem = (itemId) => {
-        let newItemList = items
-        for (let i = 0; i < newItemList.length; i++) {
-            if (newItemList[i].item.id == itemId) {
-                newItemList.splice(i, 1);
-            }
-        }
-        setItems(newItemList)
+        setItems(items.filter((item) => item.item.id !== itemId));
         console.log(`Carrito actual`)
         console.log(items)
 		//funcion 
@@ -67,11 +61,27 @@ export const ItemsProvider = ({ children }) => {
 		//funcion
 	};
 
+    const getTotalItemQuantity= () => {
+        let quantity =0
+		for (let i = 0; i < items.length; i++) {
+            quantity+=items[i].quantity
+        }
+        return quantity
+	};
+
+    const getTotalAmmount= () => {
+        let amount =0
+		for (let i = 0; i < items.length; i++) {
+            amount+=(items[i].quantity*items[i].item.precio)
+        }
+        return amount
+	};
+
     
 	// 3 - RETORNAMOS NUESTRO CONTEXT CON UN .PROVIDER
 
 	return (
-		<ItemsContext.Provider value={[items, setItems,addItem, removeItem, clearCart, isInCart]}>
+		<ItemsContext.Provider value={[items, setItems,addItem, removeItem, clearCart, isInCart, getTotalItemQuantity, getTotalAmmount]}>
 			{/* 4 - PROPS.CHILDREN O BIEN CHILDREN */}
 			{children}
 		</ItemsContext.Provider>

@@ -23,6 +23,10 @@ import { ItemsProvider } from './providers/ItemProvider'
 const message = "Soy un ItemListContainer"
 
 class App extends Component {
+  
+  componentDidMount() {
+    this.setState({});
+  }
   render(){
     return (
       <Router>

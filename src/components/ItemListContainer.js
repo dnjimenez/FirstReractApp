@@ -29,10 +29,8 @@ const ItemListContainer = () => {
 			{items.map((item) => {
                 // console.log(item)
 				return (
-                    <Link className='noDecorationLink'to={`/detail/${item.id}`}>
-                        <div key={item.id}>
-						    <Item data={item}/>
-					    </div>
+                    <Link className='centeredSubItemList noDecorationLink'to={`/detail/${item.id}`}>
+						<Item data={item} key={item.id}/>
                     </Link>
 					
 				);
