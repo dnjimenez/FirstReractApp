@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, useContext} from 'react'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
@@ -17,16 +17,19 @@ import TazasView from './views/TazasView';
 import CartView from './views/CartView';
 
 //Providers
-import { ItemsProvider } from './providers/ItemProvider'
+import { ItemsProvider, ItemsContext } from './providers/ItemProvider'
 
 
 const message = "Soy un ItemListContainer"
 
 class App extends Component {
-  
-  componentDidMount() {
-    this.setState({});
-  }
+
+  // componentDidMount() {
+  //   const addItem = useContext(ItemsContext);
+  //   addItem()
+  //   /* perform a side-effect at mount using the value of UserContext */
+  // }
+
   render(){
     return (
       <Router>

@@ -1,39 +1,43 @@
 import {React, useState, useEffect} from 'react';
 // import './ItemListContainer.css';
 import ItemDetail from "./ItemDetail"
-import { listItems } from '../constants/ItemConstants';
+
+//Firebase
+import { collection, query, where, getDocs, DocumentSnapshot, documentId } from "firebase/firestore"; //firestore connection
+import { db } from '../firebase/firebaseConfig'//firebase db
+
 
 
 const ItemDetailContainer = ({itemId}) => {
 
-    // console.log(itemId)
 
-    function getItem(){
-        for (let i = 0; i < listItems.length; i++) {
+    function getItem(items){
+        for (let i = 0; i < items.length; i++) {
             // console.log(listItems[i])
-            if (listItems[i].id==itemId.id){
+            if (items[i].id==itemId.id){
                 // console.log(true)
-                return listItems[i]
+                return items[i]
             }
         }
     }
-
-    const promesa = new Promise((resolve) => {
-        //code side
-        setTimeout(() => {
-            resolve(getItem())
-        }, 2000)
-    })
-    
 
     const [stateItem, setStateItem] = useState({})
     
 
     useEffect(() => {
-        promesa.then((response) => {
-            // console.log(response)
-            setStateItem(response)
-        })
+        const getItems = async() => {
+            const q = query(collection(db, "items"), where(documentId(), "==", itemId.id));
+            const docs = [];
+            const querySnapshot = await getDocs(q);
+            // console.log("QueryData: ",querySnapshot)
+            querySnapshot.forEach((doc) =>{
+                // console.log("data:",doc.data(),"ID:", doc.id)
+                docs.push({...doc.data(),id:doc.id})
+            })
+            // console.log(docs)
+            setStateItem(docs[0])
+        };
+        getItems()
     }, [])
 
     

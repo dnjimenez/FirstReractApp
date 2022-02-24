@@ -11,7 +11,7 @@ import { ItemsContext } from '../providers/ItemProvider'
 
 
 const NavBar = () => {
-  const [items, setItems, addItem,removeItem, clearCart, isInCart, getItemQuantity] = useContext(ItemsContext);//Context para chequeo de cart
+  const [items, setItems, addItem,removeItem, clearCart, isInCart, getTotalItemQuantity] = useContext(ItemsContext);//Context para chequeo de cart
 
   return <Navbar bg="light" expand="lg">
   <Container className='customNavbar'>
@@ -51,7 +51,7 @@ const NavBar = () => {
         <Link to="/Cart">
         <CartWidget/>
       </Link>):()} */}
-      {true &&
+      {items.cantidadTotal>0 &&
         <Link to="/Cart">
           <CartWidget/>
         </Link>

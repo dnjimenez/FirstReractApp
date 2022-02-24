@@ -5,24 +5,40 @@ import './ItemListContainer.css';
 import Item from "./Item"
 import { listItems } from '../constants/ItemConstants';
 
+//Firebase
+import { collection, query, where, getDocs, DocumentSnapshot } from "firebase/firestore"; //firestore connection
+import { db } from '../firebase/firebaseConfig'//firebase db
+
 const ItemListContainer = () => {
     
-    const promesa = new Promise((resolve) => {
-        //code side
-        setTimeout(() => {
-            resolve(listItems)
-        }, 2000)
-    })
-    
-
     const [items, setItems] = useState([])
     useEffect(() => {
-        promesa.then((response) => {
-            setItems(response)
-        })
+        const getItems = async() => {
+            const q = query(collection(db, "items"));
+            // const q = query(collection(db, "items"), where("name", "==", "Charmander"));
+            const docs = [];
+            const querySnapshot = await getDocs(q);
+            // console.log("QueryData: ",querySnapshot)
+            querySnapshot.forEach((doc) =>{
+                // console.log("data:",doc.data(),"ID:", doc.id)
+                docs.push({...doc.data(),id:doc.id})
+            })
+            // console.log(docs)
+
+            setItems(docs.sort(sortFunction))//ordenamiento por numero de pokedex
+        };
+        getItems()
     }, [])
 
-    
+    const sortFunction = (a,b) =>{
+        if (a.pokedexNumber > b.pokedexNumber) {
+            return 1;
+        }
+        if (a.pokedexNumber < b.pokedexNumber) {
+            return -1;
+        }
+        return 0;
+    }
 
     return (
 		<div class='itemListContainer'>

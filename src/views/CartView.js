@@ -12,12 +12,12 @@ const CartView = () => {
 
     const [items, setItems,addItem, removeItem, clearCart, isInCart, getTotalItemQuantity, getTotalAmmount] = useContext(ItemsContext);//Funcion para mandar items al cart
     //TODO: Revisar esto, deja de funcionar si se cambia el orden de las constantes
-    console.log(getTotalItemQuantity())
+    // console.log("cart quantity:", items.items.length)
 return <div text-align='center'>
     <h1>Bienvenido al Cart</h1>
-    {items.length > 0 ? ( 
+    {items.items.length > 0 ? ( 
         <div class='cartItemContainer'>
-            {items.map((itemData) => {
+            {items.items.map((itemData) => {
                 // console.log(item)
                 return (
                     <div>

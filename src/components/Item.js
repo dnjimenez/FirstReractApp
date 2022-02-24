@@ -8,7 +8,7 @@ const Item = ({data}) => {
         <Card.Body>
             <Card.Title className='cardText'>{data.name}</Card.Title>
             <Card.Text className='cardText'>
-                {data.description}
+                {`\$${data.price}`}
             </Card.Text>
         {/* <Button variant="dark">Comprar</Button> */}
     </Card.Body>

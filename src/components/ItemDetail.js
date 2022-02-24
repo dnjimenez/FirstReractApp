@@ -27,11 +27,11 @@ const ItemDetail = ({data}) => {
             <Card style={{ width: '25rem', height: "500px"}} id="infoCardDetail">
                 <Card.Title class = 'itemTitleArea cardCenterItem'><h4>{data.name}</h4></Card.Title>
                 <Card.Text class= 'itemDescriptionArea'>
-                {data.largeDescription}
+                {data.description}
                 </Card.Text>
                 <Card.Text class='itemStockArea'>
                 <h5>Stock: {data.stock}</h5>
-                <h5>Precio: {data.precio}</h5>
+                <h5>Precio: {data.price}</h5>
                 </Card.Text>
                 <div class='counterArea cardCenterItem'>
                     <ItemCount stock={data.stock} parentCallback = {handleCallback}/>

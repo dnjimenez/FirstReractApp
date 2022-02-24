@@ -4,53 +4,73 @@ import React, { createContext, useState } from 'react';
 export const ItemsContext = createContext();
 
 // STATE que le pasamos al useState
-const initialState = [
-];
+const initialState = {
+    items:[],
+    cantidad:0,
+    cantidadTotal:0
+};
 
 // 2 - CREAR EL COMPONENTE PROVIDER (ItemsProvider)
 
 export const ItemsProvider = ({ children }) => {
 	const [items, setItems] = useState(initialState);
-
-	// const foo = () => {
-	// 	alert(`Cantidad de items en nuestro carrito: ${items.length}`);
-	// };
+    var [totalQuantity, setTotalQuantity] = useState(0);
 
     const addItem = (item,quantity) => {
         //TODO: Mejorar Performance
+        console.log("Cantidad de Items Inicial:",items.cantidadTotal)
         if(quantity>0){
-            let newItemList = items
-            // console.log(item.id)
             if (!isInCart(item.id)){
-                newItemList.push({item:item, quantity:quantity})
+                console.log("Camino Elegido: if")
+                setItems(
+                    {
+                        items:[...items.items, { item: item, quantity: quantity }],
+                        cantidad:items.cantidad+=1,
+                        cantidadTotal:items.cantidadTotal+=quantity
+                    });
+                setTotalQuantity(totalQuantity+=quantity)//test
             }
             else{
-                for (let i = 0; i < newItemList.length; i++) {
-                    if (newItemList[i].item.id == item.id) {
-                        newItemList[i].quantity+=quantity
+                console.log("Camino Elegido: else")
+                for (let i = 0; i < items.items.length; i++) {
+                    if (items.items[i].item.id == item.id) {
+                        items.items[i].quantity += quantity;
+                        items.cantidadTotal += quantity;
                     }
                 }
+                setItems(items)
+                setTotalQuantity(totalQuantity+=quantity)//test
+                console.log("cantidad items Final",items.cantidadTotal)
             }
-            setItems(newItemList)
-            console.log(`Carrito actual`)
-            console.log(items)
+            // console.log(`Carrito actual`)
+            // console.log(items)
         }
 	};
 
     const removeItem = (itemId) => {
-        setItems(items.filter((item) => item.item.id !== itemId));
+        let quantityToSubstract = items.items.filter((item) => item.item.id == itemId)[0].quantity//saco la cantidad del item antes de sacarlo
+        let newTotalQuantity = items.cantidadTotal-quantityToSubstract // saco la cantidad total nueva restando la cantidad de los items que voy a eliminar
+
+        setItems(
+            {
+                items:[...items.items.filter((item) => item.item.id !== itemId)],//Saco el item que corresponde al id
+                cantidad:items.cantidad-=1,
+                cantidadTotal:items.cantidadTotal=newTotalQuantity
+            });
+
+        setTotalQuantity(newTotalQuantity)//test
         console.log(`Carrito actual`)
         console.log(items)
 		//funcion 
 	};
 
     const clearCart = () => {
-		setItems([])
+		setItems(initialState)
 	};
 
     const isInCart = (itemId) => {
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].item.id == itemId) {
+        for (let i = 0; i < items.items.length; i++) {
+            if (items.items[i].item.id == itemId) {
                 // console.log(true);
                 return true
             }
@@ -71,17 +91,17 @@ export const ItemsProvider = ({ children }) => {
 
     const getTotalAmmount= () => {
         let amount =0
-		for (let i = 0; i < items.length; i++) {
-            amount+=(items[i].quantity*items[i].item.precio)
+		for (let i = 0; i < items.items.length; i++) {
+            console.log("quantity:", items.items[i].item)
+            amount+=(items.items[i].quantity*items.items[i].item.price)
         }
         return amount
 	};
-
     
 	// 3 - RETORNAMOS NUESTRO CONTEXT CON UN .PROVIDER
 
 	return (
-		<ItemsContext.Provider value={[items, setItems,addItem, removeItem, clearCart, isInCart, getTotalItemQuantity, getTotalAmmount]}>
+		<ItemsContext.Provider value={[items, setItems,addItem, removeItem, clearCart, isInCart, getTotalItemQuantity, getTotalAmmount, totalQuantity, setTotalQuantity]}>
 			{/* 4 - PROPS.CHILDREN O BIEN CHILDREN */}
 			{children}
 		</ItemsContext.Provider>
