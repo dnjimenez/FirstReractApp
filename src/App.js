@@ -15,6 +15,7 @@ import ItemDetailView from './views/ItemDetailView'
 import LocationView from './views/LocationView';
 import TazasView from './views/TazasView';
 import CartView from './views/CartView';
+import ErrorPageView from './views/ErrorPageView';
 
 //Providers
 import { ItemsProvider, ItemsContext } from './providers/ItemProvider'
@@ -47,6 +48,7 @@ class App extends Component {
             <Route path='/Locacion' element={<LocationView/>}/>
             <Route path='Tazas' element={<TazasView/>}/>
             <Route path='/Cart' element={<CartView/>}/>
+            <Route path='*' element={<ErrorPageView/>}/>
           </Routes>
         </ItemsProvider>
       </Router>

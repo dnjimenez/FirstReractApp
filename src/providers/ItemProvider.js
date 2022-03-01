@@ -66,6 +66,7 @@ export const ItemsProvider = ({ children }) => {
 
     const clearCart = () => {
 		setItems(initialState)
+        setTotalQuantity(0)
 	};
 
     const isInCart = (itemId) => {
@@ -92,7 +93,7 @@ export const ItemsProvider = ({ children }) => {
     const getTotalAmmount= () => {
         let amount =0
 		for (let i = 0; i < items.items.length; i++) {
-            console.log("quantity:", items.items[i].item)
+            // console.log("quantity:", items.items[i].item)
             amount+=(items.items[i].quantity*items.items[i].item.price)
         }
         return amount
