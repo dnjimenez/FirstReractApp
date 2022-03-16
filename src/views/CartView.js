@@ -1,8 +1,11 @@
 //TODO: SACAR TODA LA LOGICA DEL CARTVIEW
 
 import React, { useContext, useState} from 'react';
-import { Button, Form} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
+
+import './CartView.css'
+import CartItem from '../components/CartItem';
 
 //ContextImport
 import { ItemsContext } from '../providers/ItemProvider'
@@ -15,8 +18,9 @@ import { db } from '../firebase/firebaseConfig'//firebase db
 const initialState = {
 	name: '',
 	lastName: '',
-    telephoneNumber: null,
+    telephoneNumber: Number,
 	email: '',
+    items: [],
 };
 
 
@@ -34,6 +38,7 @@ const CartView = () => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		// console.log(values);
+        values.items=items.items
 		const docRef = await addDoc(collection(db, 'purchases'), {
 			values,
 		});
@@ -45,50 +50,53 @@ const CartView = () => {
     const [items, setItems,addItem, removeItem, clearCart, isInCart, getTotalItemQuantity, getTotalAmmount] = useContext(ItemsContext);//Funcion para mandar items al cart
     //TODO: Revisar esto, deja de funcionar si se cambia el orden de las constantes
     // console.log("cart quantity:", items.items.length)
-return <div text-align='center'>
+
+return <div class='cartView'>
     <h1>Bienvenido al Cart</h1>
+    {/* <CartItem className='centeredItem'/> */}
     {items.items.length > 0 ? ( 
         <div class='cartItemContainer'>
             {items.items.map((itemData) => {
                 // console.log(item)
                 return (
-                    <div>
-                        <h3>item:{itemData.item.name}     cantidad:{itemData.quantity}</h3> 
-                        <Button onClick={() => removeItem(itemData.item.id)} variant="dark">Remover Item</Button>
-                    </div>
+                    <CartItem className='m-10' data={itemData} key={itemData.item.id}/>
                 );
             })} 
-            <Button onClick={() => clearCart()} variant="dark">Vaciar Carrito</Button>
-            <h2>Monto Total: {getTotalAmmount()}</h2>
-            <Link to="/Shop">
-                <Button variant="dark">Volver a la Tienda</Button>
-            </Link>
+            <div class='cartBriefArea'>
+                <Link to="/Shop" className='m-10'>
+                    <Button variant="dark">Volver a la Tienda</Button>
+                </Link>
+                <h2 className='m-10'>Monto Total: {getTotalAmmount()}</h2>
+                <Button className='m-10'onClick={() => clearCart()} variant="dark">Vaciar Carrito</Button>
+            </div>
 
-            <form onSubmit={onSubmit}>
-                <label>
-                    Nombre:
-                    <input onChange={handleOnChange} value={values.name} type="text" name="name" />
+            <form class='cartForm' onSubmit={onSubmit}>
+                <label class='formNameArea centerAligned'>
+                    <h3>Nombre</h3>
+                    <input class='itemStyle' onChange={handleOnChange} value={values.name} type="text" name="name" />
                 </label>
-                <label>
-                    Apellido:
-                    <input onChange={handleOnChange} value={values.surname} type="text" name="surname" />
+                <label class='formSurnameArea centerAligned'>
+                    <h3>Apellido</h3>
+                    <input class='itemStyle' onChange={handleOnChange} value={values.lastName} type="text" name="lastName" />
                 </label>
-                <label>
-                    Numero de Telefono:
-                    <input onChange={handleOnChange} value={values.telephoneNumber} type="number" name="tel"/>
+                <label class='formPhoneArea centerAligned'>
+                    <h3>Numero de Telefono</h3>
+                    <input class='itemStyle' onChange={handleOnChange} value={values.telephoneNumber} type="number" name="telephoneNumber"/>
                 </label>
-                <label>
-                    Email:
-                    <input onChange={handleOnChange} value={values.email} type="email" name="email" />
+                <label class='formEmailArea centerAligned'>
+                    <h3>Email</h3>
+                    <input class='itemStyle' onChange={handleOnChange} value={values.email} type="email" name="email" />
                 </label>
                 {items.cantidadTotal>1 &&
-                    <Button variant="dark" type="submit">Terminar Compra</Button>
+                    <label class='formButtonArea centerAligned'>
+                        <Button variant="dark" type="submit">Terminar Compra</Button>
+                    </label>
                 }
             </form>
             {purchaseID && <CartMessageSuccess purchaseID={purchaseID} />}
         </div>
         ) : (
-        <div> <p> No tenés nada en el carrito </p> </div>
+        <h3 style={{ margin:'20px'}}> No tenés nada en el carrito </h3>
         )}
 </div> 
 };

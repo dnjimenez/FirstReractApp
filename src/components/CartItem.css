@@ -1,0 +1,33 @@
+.cartItem {  
+    align-items: center;
+    justify-items: center;
+    display: grid;
+    height:150px;
+    width:70rem;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "cartItemQuantityArea cartItemImgArea cartItemDescriptionArea cartItemDescriptionArea cartItemPriceArea cartItemButtonArea";
+}
+
+.itemStyle{
+    color: White;
+    border-radius: 25px;
+    border: 4px solid rgb(187, 187, 31); 
+    background-color: black;
+}
+
+.cartItemImgArea { 
+    grid-area: cartItemImgArea; 
+    height:150px;
+}
+
+.cartItemQuantityArea { grid-area: cartItemQuantityArea; }
+
+.cartItemButtonArea { grid-area: cartItemButtonArea; }
+
+.cartItemDescriptionArea { grid-area: cartItemDescriptionArea; }
+
+.cartItemPriceArea { grid-area: cartItemPriceArea; }

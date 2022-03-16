@@ -1,0 +1,15 @@
+.homeItemContainer{
+    margin-top:30px;
+    padding-top:50px;
+    padding-bottom:50px;
+    width:70em;
+    border:10px solid;
+    border-radius: 50px;
+    border-color:rgb(187, 187, 31);
+    background-color: black;
+    display: grid;
+    justify-content:center;
+    align-content: stretch;
+    grid-gap:40px;
+    grid-template-columns: repeat( auto-fit, 300px );
+}

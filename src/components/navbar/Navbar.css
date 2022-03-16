@@ -1,0 +1,37 @@
+.noDecorationLink{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+/* Solucion porque sino se ponia azul al pasarle el mouse por arriba */
+.noDecorationLink:hover{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.customNavbarColor{
+    /* TODO:REVISAR ESTO */
+    background-color: inherit !important;
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.customNavbarColor:hover{
+    color: inherit;
+}
+
+.navbarReactLink{
+    display: flex;
+    align-items: stretch !important;
+    align-content: stretch !important;
+}
+
+#basic-navbar-nav{
+    display:flex;
+    justify-content: space-between;
+    
+}
+
+.nav-link{
+    background-color: inherit !important;
+}

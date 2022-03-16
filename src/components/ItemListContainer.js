@@ -9,13 +9,14 @@ import { listItems } from '../constants/ItemConstants';
 import { collection, query, where, getDocs, DocumentSnapshot } from "firebase/firestore"; //firestore connection
 import { db } from '../firebase/firebaseConfig'//firebase db
 
-const ItemListContainer = () => {
+const ItemListContainer = (props) => {
     
     const [items, setItems] = useState([])
     useEffect(() => {
+        console.log('type,',props)
         const getItems = async() => {
-            const q = query(collection(db, "items"));
-            // const q = query(collection(db, "items"), where("name", "==", "Charmander"));
+            // const q = query(collection(db, "items"));
+            const q = query(collection(db, "items"), where("type", "==", props.type), where("size", "==",  Number(props.size)));
             const docs = [];
             const querySnapshot = await getDocs(q);
             // console.log("QueryData: ",querySnapshot)
@@ -25,20 +26,21 @@ const ItemListContainer = () => {
             })
             // console.log(docs)
 
-            setItems(docs.sort(sortFunction))//ordenamiento por numero de pokedex
+            // setItems(docs.sort(sortFunction))//ordenamiento por numero de pokedex
+            setItems(docs)
         };
         getItems()
     }, [])
 
-    const sortFunction = (a,b) =>{
-        if (a.pokedexNumber > b.pokedexNumber) {
-            return 1;
-        }
-        if (a.pokedexNumber < b.pokedexNumber) {
-            return -1;
-        }
-        return 0;
-    }
+    // const sortFunction = (a,b) =>{
+    //     if (a.pokedexNumber > b.pokedexNumber) {
+    //         return 1;
+    //     }
+    //     if (a.pokedexNumber < b.pokedexNumber) {
+    //         return -1;
+    //     }
+    //     return 0;
+    // }
 
     return (
 		<div class='itemListContainer'>

@@ -1,8 +1,19 @@
+@font-face {
+  font-family: "MedievalSharpRegular";
+  src: url("./fonts/MedievalSharp-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-display: block;
+}
+
+body,html{
+  font-family: 'MedievalSharpRegular';
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -19,3 +30,11 @@ code {
 /* *{
   background-color: transparent !important;
 } */
+
+#root{
+  background-color: palegoldenrod;
+  /* TODO:REVISAR ESTO */
+}
+html{
+  background-color: palegoldenrod;
+}

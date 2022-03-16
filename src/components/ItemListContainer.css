@@ -3,6 +3,7 @@
     /* display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px; */
+    /* background-color: palegoldenrod; */
     display: grid;
     justify-content:center;
     /* grid-auto-columns: 50px; */
