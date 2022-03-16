@@ -21,7 +21,8 @@
 
 .cartItemImgArea { 
     grid-area: cartItemImgArea; 
-    height:150px;
+    height:120px;
+
 }
 
 .cartItemQuantityArea { grid-area: cartItemQuantityArea; }

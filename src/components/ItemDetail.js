@@ -21,7 +21,7 @@ const ItemDetail = ({data}) => {
     
     return <div class="itemDetailCard">
         <div class="ImageArea">
-            <img id='itemImage'src={data.img}></img>
+            <img id='itemImage'src={data.img} style={{height: "500px"}}></img>
         </div>
         <div class="infoCard">
             <Card style={{ width: '25rem', height: "500px"}} id="infoCardDetail">
