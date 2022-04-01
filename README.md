@@ -2,4 +2,6 @@
 
 Autor: Dario Nicolas Jimenez
 
-Tematica Provisional: Pokemon
+Librerias Necesarias para iniciar el proyecto:
+react-bootstrap
+react-router-bootstrap
